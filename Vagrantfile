@@ -79,7 +79,7 @@ Vagrant.configure("2") do |config|
     # Install Vue CLI globally
     sudo npm install -g @vue/cli
 	
-	# Install MongoDB
+    # Install MongoDB
     sudo apt-get install -y mongodb
 
     # Start MongoDB service
@@ -102,21 +102,21 @@ Vagrant.configure("2") do |config|
     # Copy 'client' and 'server' folders to 'mevn-app'
     cp -r Valkyrie/client mevn-app/client
     cp -r Valkyrie/server mevn-app/server
-	cp Valkyrie/start_mevn.sh mevn-app/start_mevn.sh
-	cp Valkyrie/stop_mevn.sh mevn-app/stop_mevn.sh
-	cp Valkyrie/restart_mevn.sh mevn-app/restart_mevn.sh
+    cp Valkyrie/start_mevn.sh mevn-app/start_mevn.sh
+    cp Valkyrie/stop_mevn.sh mevn-app/stop_mevn.sh
+    cp Valkyrie/restart_mevn.sh mevn-app/restart_mevn.sh
 	
-	chmod +x mevn-app/start_mevn.sh
+    chmod +x mevn-app/start_mevn.sh
     chmod +x mevn-app/stop_mevn.sh
     chmod +x mevn-app/restart_mevn.sh
 
     # Remove the cloned repo
     rm -rf Valkyrie
 	
-	cp mevn-app/server 
-	npm install
+    cp mevn-app/server 
+    npm install
 	
-	cp ../client
-	npm install
+    cp ../client
+    npm install
   SHELL
 end
