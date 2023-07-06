@@ -47,10 +47,23 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   #config.vm.synced_folder "./mevn-app", "/home/vagrant/mevn-app"
-  config.vm.synced_folder "./mevn-app", "/home/vagrant/mevn-app", 
-                          type: "rsync", 
-                          rsync__exclude: ["node_modules/"],
-                          rsync__auto: true
+  config.vm.synced_folder "./mevn-app/client/public", "/home/vagrant/mevn-app/client/public"
+  config.vm.synced_folder "./mevn-app/client/src", "/home/vagrant/mevn-app/client/src"
+  config.vm.synced_folder "./mevn-app/client/babel.config.js", "/home/vagrant/mevn-app/client/babel.config.js"
+  config.vm.synced_folder "./mevn-app/client/jsconfig.json", "/home/vagrant/mevn-app/client/jsconfig.json"
+  config.vm.synced_folder "./mevn-app/client/package-lock.json", "/home/vagrant/mevn-app/client/package-lock.json"
+  config.vm.synced_folder "./mevn-app/client/package.json", "/home/vagrant/mevn-app/client/package.json"
+  config.vm.synced_folder "./mevn-app/client/vue.config.js", "/home/vagrant/mevn-app/client/vue.config.js"
+  config.vm.synced_folder "./mevn-app/client.log", "/home/vagrant/mevn-app/client.log"
+  config.vm.synced_folder "./mevn-app/client.pid", "/home/vagrant/mevn-app/client.pid"
+  config.vm.synced_folder "./mevn-app/restart_mevn.sh", "/home/vagrant/mevn-app/restart_mevn.sh"
+  config.vm.synced_folder "./mevn-app/server/package-lock.json", "/home/vagrant/mevn-app/server/package-lock.json"
+  config.vm.synced_folder "./mevn-app/server/package.json", "/home/vagrant/mevn-app/server/package.json"
+  config.vm.synced_folder "./mevn-app/server/server.js", "/home/vagrant/mevn-app/server/server.js"
+  config.vm.synced_folder "./mevn-app/server.log", "/home/vagrant/mevn-app/server.log"
+  config.vm.synced_folder "./mevn-app/server.pid", "/home/vagrant/mevn-app/server.pid"
+  config.vm.synced_folder "./mevn-app/start_mevn.sh", "/home/vagrant/mevn-app/start_mevn.sh"
+  config.vm.synced_folder "./mevn-app/stop_mevn.sh", "/home/vagrant/mevn-app/stop_mevn.sh"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
