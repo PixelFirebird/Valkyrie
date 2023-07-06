@@ -46,24 +46,7 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  #config.vm.synced_folder "./mevn-app", "/home/vagrant/mevn-app"
-  config.vm.synced_folder "./mevn-app/client/public", "/home/vagrant/mevn-app/client/public"
-  config.vm.synced_folder "./mevn-app/client/src", "/home/vagrant/mevn-app/client/src"
-  config.vm.synced_folder "./mevn-app/client/babel.config.js", "/home/vagrant/mevn-app/client/babel.config.js"
-  config.vm.synced_folder "./mevn-app/client/jsconfig.json", "/home/vagrant/mevn-app/client/jsconfig.json"
-  config.vm.synced_folder "./mevn-app/client/package-lock.json", "/home/vagrant/mevn-app/client/package-lock.json"
-  config.vm.synced_folder "./mevn-app/client/package.json", "/home/vagrant/mevn-app/client/package.json"
-  config.vm.synced_folder "./mevn-app/client/vue.config.js", "/home/vagrant/mevn-app/client/vue.config.js"
-  config.vm.synced_folder "./mevn-app/client.log", "/home/vagrant/mevn-app/client.log"
-  config.vm.synced_folder "./mevn-app/client.pid", "/home/vagrant/mevn-app/client.pid"
-  config.vm.synced_folder "./mevn-app/restart_mevn.sh", "/home/vagrant/mevn-app/restart_mevn.sh"
-  config.vm.synced_folder "./mevn-app/server/package-lock.json", "/home/vagrant/mevn-app/server/package-lock.json"
-  config.vm.synced_folder "./mevn-app/server/package.json", "/home/vagrant/mevn-app/server/package.json"
-  config.vm.synced_folder "./mevn-app/server/server.js", "/home/vagrant/mevn-app/server/server.js"
-  config.vm.synced_folder "./mevn-app/server.log", "/home/vagrant/mevn-app/server.log"
-  config.vm.synced_folder "./mevn-app/server.pid", "/home/vagrant/mevn-app/server.pid"
-  config.vm.synced_folder "./mevn-app/start_mevn.sh", "/home/vagrant/mevn-app/start_mevn.sh"
-  config.vm.synced_folder "./mevn-app/stop_mevn.sh", "/home/vagrant/mevn-app/stop_mevn.sh"
+  config.vm.synced_folder "./mevn-app", "/home/vagrant/mevn-app"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -76,6 +59,7 @@ Vagrant.configure("2") do |config|
   #   # Customize the amount of memory on the VM:
     vb.memory = "1024"
     vb.cpus = 2
+    vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"] 
   end
   #
   # View the documentation for the provider you are using for more
