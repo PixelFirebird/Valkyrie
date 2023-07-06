@@ -1,5 +1,5 @@
 # Download Vagrant file
-Invoke-WebRequest -Uri "https://my-website.com/vagrantfile" -OutFile ".\Vagrantfile"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/PixelFirebird/Valkyrie/main/Vagrantfile" -OutFile ".\Vagrantfile"
 
 # Create necessary directories if they don't exist
 if (!(Test-Path -Path ".\mevn-app\client")) {
