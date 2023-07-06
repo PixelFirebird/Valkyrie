@@ -73,8 +73,9 @@ config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get install -y curl git
 
     # Install Node.js and npm
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
     sudo apt-get install -y nodejs
+    sudo apt-get install -y build-essential
 
     # Install Vue CLI globally
     sudo npm install -g @vue/cli
