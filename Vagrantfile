@@ -67,7 +67,7 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
+config.vm.provision "shell", inline: <<-SHELL
     # Install dependencies
     sudo apt-get update
     sudo apt-get install -y curl git
@@ -86,14 +86,7 @@ Vagrant.configure("2") do |config|
     sudo systemctl start mongodb
     sudo systemctl enable mongodb
 
-    # Install Node.js and npm
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-    sudo apt-get install -y nodejs
-
-    # Install Vue CLI globally
-    sudo npm install -g @vue/cli
-	
-	# Clone the repo
+    # Clone the repo
     git clone https://github.com/PixelFirebird/Valkyrie.git
 
     # Create 'mevn-app' directory
@@ -113,10 +106,10 @@ Vagrant.configure("2") do |config|
     # Remove the cloned repo
     rm -rf Valkyrie
 	
-    cp mevn-app/server 
-    npm install
+    cd mevn-app/server 
+    sudo npm install
 	
-    cp ../client
-    npm install
+    cd ../../mevn-app/client
+    sudo npm install
   SHELL
 end
