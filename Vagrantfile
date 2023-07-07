@@ -9,6 +9,9 @@ Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
+  
+  # Ensure virtualbox guest plugins are installed and latest
+  config.vagrant.plugins = ["vagrant-vbguest"]
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
@@ -110,6 +113,12 @@ config.vm.provision "shell", inline: <<-SHELL
 	mkdir /home/vagrant/client_node_modules
     mkdir /home/vagrant/mevn-app/server/node_modules
     mkdir /home/vagrant/mevn-app/client/node_modules
+	
+	sudo chown -R vagrant mevn-app
+    sudo chgrp -R vagrant mevn-app
+	
+	sudo chown -R vagrant /home/vagrant/server_node_modules
+    sudo chgrp -R vagrant /home/vagrant/client_node_modules
 
     sudo mount --bind /home/vagrant/server_node_modules /home/vagrant/mevn-app/server/node_modules
     sudo mount --bind /home/vagrant/client_node_modules /home/vagrant/mevn-app/client/node_modules
