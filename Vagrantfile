@@ -110,14 +110,17 @@ config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get install -y bindfs
 
     mkdir /home/vagrant/server_node_modules
-	mkdir /home/vagrant/client_node_modules
+    mkdir /home/vagrant/client_node_modules
     mkdir /home/vagrant/mevn-app/server/node_modules
     mkdir /home/vagrant/mevn-app/client/node_modules
 	
-	sudo chown -R vagrant mevn-app
+    sudo chown -R vagrant mevn-app
     sudo chgrp -R vagrant mevn-app
 	
-	sudo chown -R vagrant /home/vagrant/server_node_modules
+    sudo chown -R vagrant /home/vagrant/server_node_modules
+    sudo chgrp -R vagrant /home/vagrant/server_node_modules
+
+    sudo chown -R vagrant /home/vagrant/client_node_modules
     sudo chgrp -R vagrant /home/vagrant/client_node_modules
 
     sudo mount --bind /home/vagrant/server_node_modules /home/vagrant/mevn-app/server/node_modules
