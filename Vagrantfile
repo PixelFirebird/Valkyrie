@@ -143,5 +143,8 @@ config.vm.provision "shell", inline: <<-SHELL
 	
     cd ../../mevn-app/client
     sudo npm install
+
+    cd /home/vagrant/mevn-app
+    ./start_mevn
   SHELL
 end
