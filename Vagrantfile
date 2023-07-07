@@ -106,12 +106,12 @@ config.vm.provision "shell", inline: <<-SHELL
     # Install bindfs for folder binding
     sudo apt-get install -y bindfs
 
-    mkdir ~/vagrant_node_modules
-    mkdir ~/mevn-app/server/node_modules
-    mkdir ~/mevn-app/client/node_modules
+    mkdir /home/vagrant/vagrant_node_modules
+    mkdir /home/vagrant/mevn-app/server/node_modules
+    mkdir /home/vagrant/mevn-app/client/node_modules
 
-    sudo mount --bind ~/vagrant_node_modules /home/vagrant/mevn-app/client/node_modules
-    sudo mount --bind ~/vagrant_node_modules /home/vagrant/mevn-app/server/node_modules
+    sudo mount --bind /home/vagrant/vagrant_node_modules /home/vagrant/mevn-app/client/node_modules
+    sudo mount --bind /home/vagrant/vagrant_node_modules /home/vagrant/mevn-app/server/node_modules
 
     mount
 
