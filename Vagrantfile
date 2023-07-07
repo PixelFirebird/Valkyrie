@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  # config.vm.synced_folder "./mevn-app", "/home/vagrant/mevn-app"
+  config.vm.synced_folder "./mevn-app", "/home/vagrant/mevn-app"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -81,16 +81,6 @@ config.vm.provision "shell", inline: <<-SHELL
     sudo npm cache clean --force
     sudo apt-get install -y build-essential
 
-    # Install Vue CLI globally
-    sudo npm install -g @vue/cli
-	
-    # Install MongoDB
-    sudo apt-get install -y mongodb
-
-    # Start MongoDB service
-    sudo systemctl start mongodb
-    sudo systemctl enable mongodb
-
     # Clone the repo
     git clone https://github.com/PixelFirebird/Valkyrie.git
 
@@ -112,6 +102,28 @@ config.vm.provision "shell", inline: <<-SHELL
 
     # Remove the cloned repo
     rm -rf Valkyrie
+
+    # Install bindfs for folder binding
+    sudo apt-get install -y bindfs
+
+    mkdir ~/vagrant_node_modules
+    mkdir ~/mevn-app/server/node_modules
+    mkdir ~/mevn-app/client/node_modules
+
+    sudo mount --bind ~/vagrant_node_modules /home/vagrant/mevn-app/client/node_modules
+    sudo mount --bind ~/vagrant_node_modules /home/vagrant/mevn-app/server/node_modules
+
+    mount
+
+    # Install Vue CLI globally
+    sudo npm install -g @vue/cli
+	
+    # Install MongoDB
+    sudo apt-get install -y mongodb
+
+    # Start MongoDB service
+    sudo systemctl start mongodb
+    sudo systemctl enable mongodb
 	
     cd mevn-app/server 
     sudo npm install
