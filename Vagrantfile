@@ -103,7 +103,9 @@ config.vm.provision "shell", inline: <<-SHELL
     cp Valkyrie/start_mevn.sh mevn-app/start_mevn.sh
     cp Valkyrie/stop_mevn.sh mevn-app/stop_mevn.sh
     cp Valkyrie/restart_mevn.sh mevn-app/restart_mevn.sh
-	
+
+    sudo chown -R vagrant mevn-app
+    sudo chgrp -R vagrant mevn-app
     chmod +x mevn-app/start_mevn.sh
     chmod +x mevn-app/stop_mevn.sh
     chmod +x mevn-app/restart_mevn.sh
